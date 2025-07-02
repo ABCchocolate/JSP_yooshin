@@ -1,11 +1,17 @@
 package com.sinse.boardapp.pool;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class PoolManager {
 	private String driver = "com.mysql.cj.jdbc.Driver";
@@ -16,11 +22,12 @@ public class PoolManager {
 	// 비록 생성자는 막았지만 내가 지원해주는 메서드로 인스턴스를 가져가라
 	private static PoolManager instance;
 
+
 	// Connection 들을 모아서 관리할 벡터(순서가 있는 List)
 	Vector<Connection> connectionPool = new Vector<>();
 
 	private PoolManager() {
-
+		
 	}
 
 	public static PoolManager getInstance() {

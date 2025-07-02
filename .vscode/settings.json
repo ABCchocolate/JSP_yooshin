@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "mysite/WEB-INF/src",
+        "mall/WEB-INF/src",
+        "mall/WEB-INF/lib"
+    ]
+}

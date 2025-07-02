@@ -56,7 +56,7 @@ tr:nth-child(even) {
         </a>
       </td>
       <td><%= n.getWriter() %></td>
-      <td><%= n.getRegdate() %></td>
+      <td><%= n.getRegdate().substring(0, 10)%></td>
       <td><%= n.getHit() %></td>
     </tr>
   <% } %>

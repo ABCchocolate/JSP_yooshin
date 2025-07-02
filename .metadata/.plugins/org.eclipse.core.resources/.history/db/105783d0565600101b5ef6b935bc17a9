@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "mybatis-3-config.dtd">
+<mapper namespace="webapp.com.sinse.boardapp.mybatis.NoticeMapper">
+
+</mapper>

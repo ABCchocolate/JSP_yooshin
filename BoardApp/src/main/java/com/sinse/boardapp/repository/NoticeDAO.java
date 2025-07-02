@@ -2,123 +2,69 @@ package com.sinse.boardapp.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
 
 import com.sinse.boardapp.exception.NoticeException;
 import com.sinse.boardapp.model.Notice;
+import com.sinse.boardapp.mybatis.MybatisConfig;
 import com.sinse.boardapp.pool.PoolManager;
 
 public class NoticeDAO {
 	PoolManager poolManager = PoolManager.getInstance();
+	MybatisConfig config = MybatisConfig.getInstance();
+	
 	//select all record
 	public List<Notice> selectAll() {
-	    Connection con = null;
-	    PreparedStatement pstmt = null;
-	    ResultSet rs = null;
-	    List<Notice> noticeList = new ArrayList<>();
-
-	    try {
-	    	con = poolManager.getConnection();
-	        String sql = "SELECT * FROM notice ORDER BY notice_id ASC";
-	        pstmt = con.prepareStatement(sql);
-	        rs = pstmt.executeQuery();
-
-	        while (rs.next()) {
-	            Notice notice = new Notice(); 
-	            notice.setNotice_id(rs.getInt("notice_id"));
-	            notice.setTitle(rs.getString("title"));
-	            notice.setWriter(rs.getString("writer"));
-	            notice.setRegdate(rs.getString("regdate"));
-	            notice.setContent(rs.getString("content"));
-	            notice.setHit(rs.getInt("Hit"));
-
-	            noticeList.add(notice); 
-
-	        }
-	    }catch(SQLException e) {
-	    	e.getStackTrace();
-	    }
-	    finally {
-	    	poolManager.release(con, pstmt, rs);
-	    }
-
-	    return noticeList;
+		SqlSession sqlSession = config.getSqlSession();
+		List list = sqlSession.selectList("Notice.selectAll");
+		sqlSession.close();
+		return list;
 	}
 	
 	
 	//select one record
 	// Notice 객체에 notice_id 값이 미리 세팅되어 있다고 가정
 	public Notice select(int notice_id) {
-	    Connection con = null;
-	    PreparedStatement pstmt = null;
-	    ResultSet rs = null;
-	    Notice notice = new Notice();
-
-	    try {
-	        con = poolManager.getConnection(); // 커넥션 풀에서 꺼내오기
-	        String sql = "SELECT * FROM notice WHERE notice_id = ?";
-	        pstmt = con.prepareStatement(sql);
-	        pstmt.setInt(1, notice_id);
-
-	        rs = pstmt.executeQuery();
-
-	        if (rs.next()) {
-	            notice.setTitle(rs.getString("title"));
-	            notice.setContent(rs.getString("content"));
-	            notice.setWriter(rs.getString("writer"));
-	            notice.setRegdate(rs.getString("regdate"));
-	            notice.setHit(rs.getInt("hit"));
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        poolManager.release(con); // 커넥션 반환
-	    }
-
-	    return notice;
+		SqlSession sqlSession = config.getSqlSession();
+		Notice notice = sqlSession.selectOne("Notice.select", notice_id);
+		sqlSession.close();
+		return notice;
 	}
+
 
 	
 	//insert one record
 	public void insert(Notice notice) throws NoticeException{
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			con = poolManager.getConnection();
-			
-			StringBuffer sql = new StringBuffer();
-			sql.append("insert into notice(title,writer,content) values(?,?,?)");
-			
-			pstmt = con.prepareStatement(sql.toString());
-			pstmt.setString(1, notice.getTitle());
-			pstmt.setString(2, notice.getWriter());
-			pstmt.setString(3, notice.getContent());
-			
-			
-			int result = pstmt.executeUpdate();
-			
-			if(result < 1) {
-				throw new NoticeException("글 등록 실패");
-			}
-		} 
-		 catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally {
-			poolManager.release(con, pstmt);
+		SqlSession sqlSession = config.getSqlSession();
+		int result = sqlSession.insert("Notice.insert",notice);
+		sqlSession.commit(); //Confirmation DML Transaction
+		sqlSession.close();
+		if (result < 1) {
+			throw new NoticeException("등록을 실패하였습니다.");
 		}
 	}
 	//update a number of records
-	public void update() {
-		
+	public void update(Notice notice) throws NoticeException {
+		SqlSession session = MybatisConfig.getInstance().getSqlSession();
+		int result = session.update("Notice.update", notice);
+		session.commit();
+		session.close();
+
+		if (result < 1) {
+			throw new NoticeException("수정 실패");
+		}
 	}
-	public void delete() {
-		
+
+	public void delete(int notice_id) {
+		SqlSession sqlSession = config.getSqlSession();
+		int result = sqlSession.delete("Notice.delete", notice_id);
+		sqlSession.commit();
+		sqlSession.close();
+		if(result <1 ) {
+			throw new NoticeException("삭제를 실패했습니다.");
+		}
 	}
 }

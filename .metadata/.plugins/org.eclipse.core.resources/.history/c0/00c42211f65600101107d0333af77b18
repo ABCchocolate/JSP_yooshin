@@ -1,0 +1,10 @@
+package com.sinse.boardapp.controller;
+
+import javax.servlet.http.HttpServlet;
+
+public class UpdateServlet extends HttpServlet {
+	private void dopost() {
+		// TODO Auto-generated method stub
+
+	}
+}

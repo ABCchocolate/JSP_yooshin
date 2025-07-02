@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>image server upload</title>
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("button").click(function (e) {
+				
+				$("form").attr("method", "post");
+				$("form").attr("action", "/upload/regist"); // 실제 서블릿 매핑된 URL
+				$("form").submit();
+			});
+		});
+	</script>
+</head>
+<body>
+	<form enctype="multipart/form-data">
+		<input type="text" placeholder="제목 입력" name="title">
+		<input type="file" name="photo">
+		<button type="submit" name="submit">전송</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.sinse.web0618.member.controller.MemberController&apos; to &apos;MemberRegist&apos;&#x0A;- Original project: &apos;web0618&apos;&#x0A;- Original element: &apos;com.sinse.web0618.member.controller.MemberController&apos;&#x0A;- Renamed element: &apos;com.sinse.web0618.member.controller.MemberRegist&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;MemberController&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.sinse.web0618.member.controller{MemberController.java[MemberController" matchStrategy="1" name="MemberRegist" qualified="false" references="true" similarDeclarations="false" stamp="1750213737678" textual="false" version="1.0"/>
+</session>

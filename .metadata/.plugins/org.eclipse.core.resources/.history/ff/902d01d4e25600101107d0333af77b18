@@ -1,0 +1,102 @@
+package com.sinse.boardapp.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.sinse.boardapp.exception.NoticeException;
+import com.sinse.boardapp.model.Notice;
+import com.sinse.boardapp.mybatis.MybatisConfig;
+
+public class NoticeDAO {
+	
+	MybatisConfig config = MybatisConfig.getInstance();
+	
+	//select all record
+	public List<Notice> selectAll() {
+	
+		SqlSession sqlSession = config.getSqlSession();
+		List list = sqlSession.selectList("com.sinse.boardapp.model.Notice.selectAll");
+		
+		return list;
+	}
+	
+	
+	//select one record
+	// Notice 객체에 notice_id 값이 미리 세팅되어 있다고 가정
+	public Notice select(int notice_id) {
+	    Connection con = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    Notice notice = new Notice();
+
+	    try {
+	        con = poolManager.getConnection(); // 커넥션 풀에서 꺼내오기
+	        String sql = "SELECT * FROM notice WHERE notice_id = ?";
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, notice_id);
+
+	        rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            notice.setTitle(rs.getString("title"));
+	            notice.setContent(rs.getString("content"));
+	            notice.setWriter(rs.getString("writer"));
+	            notice.setRegdate(rs.getString("regdate"));
+	            notice.setHit(rs.getInt("hit"));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        poolManager.release(con); // 커넥션 반환
+	    }
+
+	    return notice;
+	}
+
+	
+	//insert one record
+	public void insert(Notice notice) throws NoticeException{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = poolManager.getConnection();
+			
+			StringBuffer sql = new StringBuffer();
+			sql.append("insert into notice(title,writer,content) values(?,?,?)");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, notice.getTitle());
+			pstmt.setString(2, notice.getWriter());
+			pstmt.setString(3, notice.getContent());
+			
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result < 1) {
+				throw new NoticeException("글 등록 실패");
+			}
+		} 
+		 catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			poolManager.release(con, pstmt);
+		}
+	}
+	//update a number of records
+	public void update() {
+		
+	}
+	public void delete() {
+		
+	}
+}

@@ -1,54 +1,23 @@
-<%@page import="com.sinse.boardapp.repository.NoticeDAO"%>
 <%@page import="com.sinse.boardapp.model.Notice"%>
+<%@page import="com.sinse.boardapp.repository.NoticeDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%!
+	NoticeDAO noticeDAO = new NoticeDAO();
+%>
+<%
+//요청 객체로부터 파라미터 뽑아내기
+//이 스크립틀릿 영역은 이 jsp가 서블릿으로 변경되어질때, service() 메서드 영역이므로, 이미 service()메서드
+//의 매개변수 요청 객체와 응답객체를 넘겨받은 상태..
+//service(HttpServletRequest request, HttpServletResponse response)
+String notice_id = request.getParameter("notice_id");
+//DAO를 불러와서 ...
+ Notice notice = noticeDAO.select(Integer.parseInt(notice_id));
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<!-- include libraries(jQuery, bootstrap) -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!-- include summernote css/js -->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
-<%
-//요청 객체 뽑아내기
-//이 스크립틀릿 영역은 이 jsp가 서블릿으로 변경되어질 때, service() 메서드 영역이므로, 이미 service() 메서드의
-//매개변수와 service(HttpServletRequest request, HttpServletReponse response)
-int noticeId = Integer.parseInt(request.getParameter("notice_id"));
-NoticeDAO noticeDAO = new NoticeDAO();
-Notice notice = noticeDAO.select(noticeId); // select 메서드는 notice_id 기준으로 Notice 하나 리턴해야 함
-%>
-<script>
-$(() => {
-    // Summernote 활성화
-    $("#content").summernote({
-        height: 250
-    });
-
-    // 버튼 클릭 시 알림창
-    $("input[type='button']").click(function() {
-        $("form").attr({
-        	action: "/notice/regist",
-        	method: "POST" //머리 데이터를 실어 나르게 됨, 따라서 정보가 노출된다.
-        })
-        $("form").submit();//전송
-    });
-    	
-});
-</script>
-
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -78,7 +47,7 @@ input[type=button] {
 	cursor: pointer;
 }
 
-input[type=submit]:hover {
+input[type=button]:hover {
 	background-color: #45a049;
 }
 
@@ -88,23 +57,71 @@ input[type=submit]:hover {
 	padding: 20px;
 }
 </style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- include libraries(jQuery, bootstrap) -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<!-- include summernote css/js -->
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
+<script type="text/javascript">
+$(() => {
+	$("#content").summernote({
+		height: 250,
+	});
+	
+	$("#content").summernote('code', "<%=notice.getContent()%>");
 
+	/* 전송 폼의 모든 내용을 가져가야한다.. */
+	$("#bt_edit").click(() => {
+		if(confirm("수정하시겠어요?")){
+			$("form").attr({
+				method:"POST",
+				action: "/notice/update"
+			});
+			$("form").submit();
+		}
+	
+	});
 
+	$("#bt_delete").click(() => {
+		if (confirm("삭제하시겠어요?")) {
+			location.href = "/notice/del?notice_id=<%=notice_id%>";
+		}
+	});
+
+	$("#bt_list").click(() => {
+		location.href = "/notice/list.jsp";
+	});
+});
+
+</script>
 </head>
 <body>
-
 	<h3>Contact Form</h3>
 
 	<div class="container">
 		<form>
-			<label for="fname">Title</label> <input type="text" id="fname"
-				name="title" placeholder="Your title.."> <label for="lname">Writer</label>
-			<input type="text" id="lname" name="writer"
-				placeholder="Your writer.."> <label for="subject">Content</label>
-			<textarea id="content" name="content" placeholder="Write something.."
-				style="height: 200px"></textarea>
-			<input type="button" value="submit">
+		<!-- hidden이란 컴포넌트의 역할을 수행하지만 눈에 보이지 않는다, 표현은 되질 않기 떄문 -->
+			<input type="hidden" name="notice_id" value="<%=notice.getNotice_id()%>"> 
+			<label for="fname">Title</label> <input type="text" id="fname" name="title" value="<%=notice.getTitle() %>"> 
+			<label for="lname">Writer</label>
+			<input type="text" id="lname" name="writer" value="<%= notice.getWriter()%>">
+			<label for="subject">Content</label>
+			<textarea id="content" name="content" placeholder="내용입력" style="height: 200px"></textarea>
+
+			<input type="button" value="수정" id = "bt_edit">
+			<input type="button" value="삭제" id = "bt_delete">
+			<input type="button" value="목록" id = "bt_list">
 		</form>
 	</div>
 

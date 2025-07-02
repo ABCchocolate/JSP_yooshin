@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.sinse.web0618.member.model.Member"/>
+    <fullyQualifiedTypeName name="com.sinse.web0618.exception.MemberException"/>
+    <fullyQualifiedTypeName name="com.sinse.web0619.test.TestServlet"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
+    <fullyQualifiedTypeName name="com.sinse.boardapp.mybatis.MybatisConfig"/>
+    <fullyQualifiedTypeName name="com.sinse.boardapp.pool.PoolManager"/>
+    <fullyQualifiedTypeName name="com.sinse.boardapp.repository.NoticeDAO"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="com.sinse.boardapp.model.Notice"/>
+    <fullyQualifiedTypeName name="com.sinse.boardapp.exception.NoticeException"/>
+</qualifiedTypeNameHistroy>
