@@ -14,8 +14,8 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
-<!-- web.xml It is read when a web container such as Tomcat is in operation. 
-	Therefore, if xml changes after operation, it should be restarted. -->
+	<!-- web.xml It is read when a web container such as Tomcat is in operation. 
+		Therefore, if xml changes after operation, it should be restarted. -->
 	<servlet>
 		<servlet-name>registServlet</servlet-name>
 		<servlet-class>com.sinse.boardapp.controller.RegistServlet</servlet-class>
@@ -39,6 +39,22 @@
 	<servlet-mapping>
 		<servlet-name>updateServlet</servlet-name>
 		<url-pattern>/notice/update</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>newsregistServlet</servlet-name>
+		<servlet-class>com.sinse.boardapp.news.controller.RegistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>newsregistServlet</servlet-name>
+		<url-pattern>/news/regist</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>writeServlet</servlet-name>
+		<servlet-class>com.sinse.boardapp.comment.controller.WriteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>writeServlet</servlet-name>
+		<url-pattern>/comment/regist</url-pattern>
 	</servlet-mapping>
 
 

@@ -102,6 +102,8 @@ $(() => {
 	$("#bt_list").click(() => {
 		location.href = "/notice/list.jsp";
 	});
+	
+	
 });
 
 </script>
