@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Hiberasync"/>
+			<item value="MemberApp"/>
 			<item value="BoardApp"/>
 			<item value="fileserver"/>
 			<item value="notice"/>
@@ -11,6 +13,8 @@
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Hiberasync"/>
+			<item value="MemberApp"/>
 			<item value="BoardApp"/>
 			<item value="fileserver"/>
 			<item value="notice"/>

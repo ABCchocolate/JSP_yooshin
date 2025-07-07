@@ -4,6 +4,11 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="false"/>
 		<list key="findhistory">
+			<item value="appBase"/>
+			<item value="host"/>
+			<item value="mysql"/>
+			<item value="global"/>
+			<item value="detail"/>
 			<item value="page"/>
 		</list>
 	</section>
