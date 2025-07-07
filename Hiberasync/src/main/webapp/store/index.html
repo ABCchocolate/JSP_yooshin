@@ -10,6 +10,21 @@
 		background: yellow;
 		margin:auto;
 	}
+	table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 	#aside_regist{
 		width:200px;
 		height:100%;
@@ -18,7 +33,7 @@
 	#content{
 		width:800px;
 		height:100%;
-		background:pink;
+		background:white;
 		float:left;
 	}	
 	
@@ -72,13 +87,45 @@
 		}
 		xhttp.send();//요청 시점이 발생하는 시점
 	}
+	function getDetail(store_id){
+		console.log(store_id);
+		let xhttp = new XMLHttpRequest();
+		xhttp.open("GET","/store/detail?store_id=" + store_id);
+		xhttp.onload = function(){
+			
+		}
+		xhttp.send();
+	}
+	
+	function printList(json){
+		let tag = "<table width = '90%'>";
+		tag += "<tr>";
+		tag += "<th> 음식 분류 </th>"
+		tag += "<th> 상호명 </th>"
+		tag += "<th> 연락처 </th>"
+		tag += "</tr>";
+		
+		for(let i =0; i < json.length; i++){
+		tag += "<tr>";
+		tag += "<td>"+json[i].foodType.title+"</td>";
+		tag += "<td><a href = 'javascript:getDetail("+json[i].store_id+")'>"+json[i].store_name+"</a></td>";
+		tag += "<td>"+json[i].tel+ "</td>";
+		tag += "</tr>";
+		}
+		tag += "</table>";
+		$("#list").html(tag);
+	}
+	
+	
 	
 	//비동기 방식의 상점 목록 요청
 	function getStoreList(){
 		let xhttp = new XMLHttpRequest();
 		xhttp.open("GET","/store/list");
 		xhttp.onload = function(){
-			
+			let json = JSON.parse(this.responseText);
+			console.log(json);
+			printList(json);
 		}
 		xhttp.send();
 	}
@@ -114,6 +161,7 @@
 	
 	$(()=>{
 		getFoodList();
+		getStoreList();
 		
 		$("#aside_regist button").click(()=>{
 			regist();

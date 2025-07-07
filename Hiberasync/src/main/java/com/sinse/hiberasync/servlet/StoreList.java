@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.sinse.hiberasync.exception.StoreException;
 import com.sinse.hiberasync.repository.StoreDAO;
+import com.sinse.hiberasync.util.Message;
 
 public class StoreList extends HttpServlet{
 	StoreDAO storeDAO = new StoreDAO();
@@ -20,12 +21,15 @@ public class StoreList extends HttpServlet{
 		Gson gson = new Gson();
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
+		Message message = new Message();
 		try {
 		List list = storeDAO.selectAll();
 		out.print(gson.toJson(list)); //client가 받을 json 문자욜
 		
 		}catch(StoreException e) {
 			e.printStackTrace();
+			message.setMsg(e.getMessage());
+			out.print(gson.toJson(message));
 		}
 
 	}
