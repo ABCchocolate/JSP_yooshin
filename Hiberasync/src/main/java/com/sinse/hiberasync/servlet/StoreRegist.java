@@ -51,14 +51,16 @@ public class StoreRegist extends HttpServlet{
 			storeDAO.insert(store);//등록
 			//200,500.. http status 코드.. 서버가 클라이언트에게 응답 시 보내는 코드(성공, 실패..)
 			response.setStatus(HttpServletResponse.SC_CREATED);
+			// 성공 메시지 응답
+			message.setResult("success");
+			message.setMsg("등록에 성공했습니다.");
+			
 		} catch (StoreException e) {
 			e.printStackTrace();
 			message.setResult("fail");
 			message.setMsg(e.getMessage());
-			out.print(gson.toJson(message));
-			
-			
 		}
+		out.print(gson.toJson(message));
 	}
 }
 

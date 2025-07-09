@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<title>Write</title>
+<script type="text/javascript">
+function upload(){
+	$("form").attr({
+		action: "/upload/regist",              // 서버의 업로드 처리 URL
+		method: "post",                        // HTTP POST
+		enctype: "multipart/form-data"         // 파일 업로드 필수
+	});
+		
+		$("form").submit()
+	}
+
+	$(()=>{
+		$("input[type = 'button']").click(()=>{
+			upload();
+		})
+	})
+</script>
+</head>
+<body>
+	<pre>
+	<form enctype="multipart/form-data">
+		<input type="text" name="title">
+		<p>
+				<input type="file" name="pic">
+			</p>
+		<p>
+		
+		<input type="button" value="upload">
+			</p>
+	</form>
+	</pre>
+</body>
+</html>
