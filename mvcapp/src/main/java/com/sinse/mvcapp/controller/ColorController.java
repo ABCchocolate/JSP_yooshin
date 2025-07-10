@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sinse.mvcapp.color.model.ColorManager;
 
@@ -14,13 +15,25 @@ import com.sinse.mvcapp.color.model.ColorManager;
  * JSP 는 View로서 사용되어질 예정이기 때문에 ...... servlet을 사용한다.
  * 
  */
-public class ColorController extends HttpServlet{
+public class ColorController implements Controller{
 	ColorManager colorManager = new ColorManager();
-	@Override
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			//controller의 5대 업무: 1) 요청을 받아야한다. 2)요청을 분석해야한다. 3)직접 일하지 않는다. 4) 결과에 보여질 데이터를 보관해야한다. 5) 알맞는 결과를 보여준다.
 			String color = request.getParameter("color"); 
 			if(color == null)color ="";	
 			String result = colorManager.getAdvice(color);
-	}		
+			
+			//controller가 view의 역할을 해서는 안된다.
+			HttpSession session = request.getSession();
+			session.setAttribute("msg", result);
+			
+			
+	}
+
+		@Override
+		public String getViewPage() {
+			// TODO Auto-generated method stub
+			return "/color/result/view";
+		}		
 }

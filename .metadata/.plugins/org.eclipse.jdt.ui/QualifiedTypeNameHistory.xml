@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.apache.ibatis.transaction.TransactionFactory"/>
-    <fullyQualifiedTypeName name="org.apache.tomcat.jdbc.pool.DataSource"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-    <fullyQualifiedTypeName name="tls.study.mybatis.MyBatisConfig"/>
-    <fullyQualifiedTypeName name="javax.xml.stream.events.Comment"/>
-    <fullyQualifiedTypeName name="tls.study.model.Comment"/>
-    <fullyQualifiedTypeName name="tls.study.exception.CommentException"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
-    <fullyQualifiedTypeName name="com.sinse.memberapp.mybatis.MyBatisConfig"/>
-    <fullyQualifiedTypeName name="ch.qos.logback.classic.Logger"/>
-    <fullyQualifiedTypeName name="com.sinse.memberapp.model.Member"/>
-    <fullyQualifiedTypeName name="java.lang.Runtime"/>
     <fullyQualifiedTypeName name="com.sinse.memberapp.repository.MemberDAO"/>
     <fullyQualifiedTypeName name="com.sinse.memberapp.exception.MemberNotFounException"/>
     <fullyQualifiedTypeName name="com.mysql.cj.xdevapi.SessionFactory"/>
@@ -27,8 +13,6 @@
     <fullyQualifiedTypeName name="com.sinse.hiberasync.exception.FoodTypeException"/>
     <fullyQualifiedTypeName name="com.sinse.hiberasync.repository.FoodTypeDAO"/>
     <fullyQualifiedTypeName name="org.hibernate.mapping.List"/>
-    <fullyQualifiedTypeName name="javax.servlet.Filter"/>
-    <fullyQualifiedTypeName name="javax.security.auth.message.callback.PrivateKeyCallback.Request"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Table"/>
     <fullyQualifiedTypeName name="javax.persistence.IdClass"/>
@@ -51,13 +35,29 @@
     <fullyQualifiedTypeName name="com.sinse.hiberasync.exception.StoreException"/>
     <fullyQualifiedTypeName name="com.sinse.hiberasync.util.Message"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.servlet.ServletFileUpload"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="com.sinse.mvcapp.blood.model.BloodManager"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
     <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
     <fullyQualifiedTypeName name="org.slf4j.Logger"/>
-    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="com.sinse.mvcapp.color.model.ColorManager"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
+    <fullyQualifiedTypeName name="java.io.IOError"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
+    <fullyQualifiedTypeName name="com.sinse.mvcapp.model.Comment"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
+    <fullyQualifiedTypeName name="java.util.concurrent.ConcurrentMap"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.security.auth.message.callback.PrivateKeyCallback.Request"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="ch.qos.logback.core.filter.Filter"/>
+    <fullyQualifiedTypeName name="org.hibernate.Filter"/>
+    <fullyQualifiedTypeName name="javax.servlet.Filter"/>
+    <fullyQualifiedTypeName name="com.sinse.mvcapp.model.Notice"/>
 </qualifiedTypeNameHistroy>
