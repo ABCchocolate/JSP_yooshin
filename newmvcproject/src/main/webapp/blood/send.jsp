@@ -110,7 +110,7 @@ button:hover {
 		<h1>당신의 혈액형은?</h1>
 		
 
-		<form action="/blood/send.jsp" method="post">
+		<form action="/blood.do" method="post">
 			<div id="option">
 				<select name="bloodType" required>
 					<option value="">혈액형 선택</option>

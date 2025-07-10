@@ -1,8 +1,8 @@
 <%@page import="java.util.List"%>
-<%@page import="com.sinse.mvcapp.model.Comment"%>
-<%@page import="com.sinse.mvcapp.repository.CommentDAO"%>
-<%@page import="com.sinse.mvcapp.model.News"%>
-<%@page import="com.sinse.mvcapp.repository.NewsDAO"%>
+<%@page import="newmvcproject.model.Comment"%>
+<%@page import="newmvcproject.notice.repository.CommentDAO"%>
+<%@page import="newmvcproject.model.News"%>
+<%@page import="newmvcproject.notice.repository.NewsDAO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!
 	NewsDAO newsDAO = new NewsDAO();

@@ -1,4 +1,4 @@
-<%@page import="com.sinse.mvcapp.model.Notice"%>
+<%@page import="newmvcproject.model.Notice"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%

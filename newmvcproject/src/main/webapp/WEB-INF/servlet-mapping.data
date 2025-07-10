@@ -1,0 +1,14 @@
+# [Controller Mapping]
+/blood.do=newmvcproject.web.servlet.BloodController
+/color.do=newmvcproject.web.servlet.ColorController
+
+# [Blood View Mapping]
+/blood/view=/blood/result.jsp
+
+# [Board Mapping]
+/notice/list.do=newmvcproject.controller.ListController
+/notice/write/view=newmvcproject.notice.controller.RegistController
+/notice/detail/view=newmvcproject.notice.controller.DetailController
+/notice/edit/view=newmvcproject.notice.controller.EditController
+/notice/del/view=newmvcproject.notice.controller.DeleteController
+/notice/view=/notice/list.jsp

@@ -118,7 +118,7 @@ button:hover {
 				</select>
 			</div>
 			
-			<div><label class="result-label"><%= request.getAttribute("bloodType") %></label></div>
+			<div><label class="result-label"><%= request.getAttribute("msg") %></label></div>
 			<button type="submit">성격 알아보기</button>
 			
 		</form>

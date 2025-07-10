@@ -29,6 +29,6 @@ public class BloodController implements Controller{
 	@Override
 	public String getViewPage() {
 		
-		return "/blood/result/view";
+		return "/blood/view";
 	}
 }

@@ -24,4 +24,3 @@ public class BloodManager {
 		return msg;
 	}
 }
-jsp servlet is a development method in charge of vc among MVCs.
