@@ -77,9 +77,12 @@ public class DispatcherServlet extends HttpServlet {
 			
 			//포워딩이란 클라이언트에게 응답정보로 재접속을 강요하는것이 아니라
 			//응답을 보류한 상태로 현재의 요청의흐름을 서버에 또 다른 서블릿이나 JSP 에게 전달하는방법
-			RequestDispatcher dis = request.getRequestDispatcher(viewPage);
-			dis.forward(request, response);
-			
+			if(controller.isForward()) {
+				RequestDispatcher dis = request.getRequestDispatcher(viewPage);
+				dis.forward(request, response);
+			}else{
+				response.sendRedirect(viewPage);
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

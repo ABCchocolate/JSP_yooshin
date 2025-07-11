@@ -3,7 +3,7 @@
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	List<Notice> list=(List)session.getAttribute("noticeList");
+	List<Notice> list=(List)request.getAttribute("noticeList");
 %>
 <!DOCTYPE html>
 <html>
@@ -105,8 +105,8 @@ button:hover {
 </head>
 <body>
 
-<h2>Zebra Striped Table</h2>
-<p>For zebra-striped tables, use the nth-child() selector and add a background-color to all even (or odd) table rows:</p>
+<h2>!!WELCOME!!</h2>
+<p>글 등록하고, 보고, 삭제하고, 수정하고</p>
 
 <table>
   <tr>
@@ -120,8 +120,8 @@ button:hover {
   <%for(int i=0;i<list.size();i++){ %>
   <% Notice notice=list.get(i);%>
   <tr>
-    <td>Jill</td>
-    <td><a href="/notice/content.do?notice_id=<%=notice.getNotice_id()%>"><%=notice.getTitle() %></a></td>
+    <td><%= i + 1 %></td>
+    <td><a href="/notice/detail.do?notice_id=<%=notice.getNotice_id()%>"><%=notice.getTitle() %></a></td>
     <td><%=notice.getWriter() %></td>
     <td><%=notice.getRegdate().substring(0,10)%></td>
     <td><%=notice.getHit() %></td>

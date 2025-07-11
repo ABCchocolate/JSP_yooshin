@@ -6,9 +6,18 @@
 /blood/view=/blood/result.jsp
 
 # [Board Mapping]
-/notice/list.do=newmvcproject.controller.ListController
-/notice/write/view=newmvcproject.notice.controller.RegistController
-/notice/detail/view=newmvcproject.notice.controller.DetailController
-/notice/edit/view=newmvcproject.notice.controller.EditController
-/notice/del/view=newmvcproject.notice.controller.DeleteController
+/notice/list.do=newmvcproject.notice.controller.ListController
+/notice/regist.do=newmvcproject.notice.controller.RegistController
+/notice/detail.do=newmvcproject.notice.controller.DetailController
+/notice/update.do=newmvcproject.notice.controller.EditController
+/notice/del.do=newmvcproject.notice.controller.DeleteController
 /notice/view=/notice/list.jsp
+
+
+# [board view mapping]
+/notice/list/view=/notice/list.jsp
+/notice/detail/view=/notice/content.jsp
+/notice/regist/view=/notice/list.do
+/notice/delete/view=/notice/list.do
+/notice/update/view=/notice/content.jsp
+

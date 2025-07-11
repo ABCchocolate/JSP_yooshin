@@ -33,4 +33,10 @@ public class BloodController implements Controller {
 		
 		return "/blood/view";
 	}
+
+	@Override
+	public boolean isForward() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

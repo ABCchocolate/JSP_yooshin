@@ -13,4 +13,8 @@ public interface Controller {
 	
 	//5단계 업무를 수행할 DispatcherServlet에게 뷰 페이지를 검색할 수 있는 검색어 반환
 	public String getViewName();
+	
+	
+	//포워딩할 지 아니면 리다이렉트 할지
+	public boolean isForward();
 }
