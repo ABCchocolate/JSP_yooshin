@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context.xsd">
+          
+          <!-- 스프링 프레임워크의 객체 간의 관계를 설명한다. -->
+		  <!-- 스프링에게 인스턴스 생성을 등록한다. class를 bean이라고한다. -->
+		  <!-- bean을 사용하면 싱글턴으로 생성할 수 있게 한다. -->
+		  <bean class = "springapp.cook.FriPan" id = "friPan"/>
+		  <bean class = "springapp.cook.Induction" id = "induction"/>
+		  <bean class = "springapp.cook.Cook" id = "cook">
+		  <!-- 요리사 클래스는 생성자로서 pan을 받아와야한다. -->
+		  	<constructor-arg ref = "induction"></constructor-arg>
+		  </bean>
+		           
+ </beans>	
+	
+
