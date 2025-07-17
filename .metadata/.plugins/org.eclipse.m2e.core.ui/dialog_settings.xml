@@ -2,6 +2,10 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="mall2"/>
+			<item value="mall"/>
+			<item value="springmvc2"/>
+			<item value="springmvc"/>
 			<item value="springapp2"/>
 			<item value="springapp"/>
 			<item value="myframework"/>
@@ -13,11 +17,14 @@
 			<item value="fileserver"/>
 			<item value="notice"/>
 			<item value="website2"/>
-			<item value="website"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="mall2"/>
+			<item value="mall"/>
+			<item value="springmvc2"/>
+			<item value="springmvc"/>
 			<item value="springapp2"/>
 			<item value="springapp"/>
 			<item value="myframework"/>
@@ -29,7 +36,6 @@
 			<item value="fileserver"/>
 			<item value="notice"/>
 			<item value="website2"/>
-			<item value="website"/>
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>

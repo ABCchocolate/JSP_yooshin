@@ -1,7 +1,7 @@
-<%@page import="mvcproject.notice.domain.Notice"%>
+
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
-	Notice notice=(Notice)request.getAttribute("notice");
+
 %>
 
 <!DOCTYPE html>
@@ -57,7 +57,7 @@ input[type=button]:hover {
 		$("#content").summernote({
 			height:250,
 		});	//서머노트 연동 
-		$("#content").summernote('code', "<%=notice.getContent()%>");
+		$("#content").summernote('code');
 		
 		//버튼에 이벤트 연결 
 		//0번째-수정
@@ -76,7 +76,7 @@ input[type=button]:hover {
 		$("#bt_del").click(()=>{
 			if(confirm("삭제하시겠어요?")){
 				//Get방식 요청(링크)
-				location.href="/notice/del.do?notice_id=<%=notice.getNotice_id()%>";
+				location.href="/notice/del.do?notice_id=";
 			}
 		});
 		
@@ -96,13 +96,13 @@ input[type=button]:hover {
   <!-- hidden 은 html 컴포넌트의 역할을 수행하지만, 시각적으로 표현되지는 않음
   	노출되지 않은 상태로 데이터를 전송할때 사용
    -->
-    <input type="hidden" name="notice_id" value="<%=notice.getNotice_id()%>">
+   <%--  <input type="hidden" name="notice_id" value="<%=notice.getNotice_id()%>">
     
     <label for="fname">Title</label>
     <input type="text" id="fname" name="title" value="<%=notice.getTitle()%>">
 
     <label for="lname">Writer</label>
-    <input type="text" id="lname" name="writer" value="<%=notice.getWriter()%>">
+    <input type="text" id="lname" name="writer" value="<%=notice.getWriter()%>"> --%>
 
     <label for="subject">Content</label>
     <textarea id="content" name="content" placeholder="내용입력" style="height:200px"></textarea>

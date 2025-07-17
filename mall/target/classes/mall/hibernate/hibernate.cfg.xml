@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+    <session-factory>
+    	<property name = "hibernate.connection.datasource">java:comp/env/jndi/mysql</property>
+    	<property name = "hibernate.direct">org.hibernate.dialect.MySQL8Dialect</property>
+	
+    	
+    	<mapping class = "mall.domain.Notice"/>
+    	<mapping class = "mall.domain.SubCategory"/>
+    	<mapping class = "mall.domain.TopCategory"/>
+
+    </session-factory>
+</hibernate-configuration>
