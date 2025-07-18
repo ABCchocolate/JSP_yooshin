@@ -10,14 +10,24 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "subcategory")
+@Table(name="subcategory")
 public class SubCategory {
 	@Id
 	private int subcategory_id;
-	
-	private int sub_name;
+	private String sub_name;
 	
 	@OneToOne
-	@JoinColumn(name = "topcategory_id")
+	@JoinColumn(name="topcategory_id")
 	private TopCategory topcategory;
+	
 }
+
+
+
+
+
+
+
+
+
+

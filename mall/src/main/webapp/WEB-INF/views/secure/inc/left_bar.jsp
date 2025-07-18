@@ -14,7 +14,7 @@
           <img src="/static/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">박유신</a>
+          <a href="#" class="d-block">민진호</a>
         </div>
       </div>
 
@@ -41,7 +41,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                회원관리
+               상품관리
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -49,19 +49,13 @@
               <li class="nav-item">
                 <a href="/static/admin/index.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>회원목록</p>
+                  <p>상품목록</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/static/admin/index2.html" class="nav-link">
+                <a href="/admin/admin/product/registform" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>회원등록</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/static/admin/index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>메일발송</p>
+                  <p>상품등록</p>
                 </a>
               </li>
             </ul>
@@ -90,7 +84,7 @@
                   <p>취소내역</p>
                 </a>
               </li>
-              
+  
             </ul>
           </li>
           <!--주문관리 메뉴 끝-->
@@ -132,7 +126,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                고객센터관리
+               고객센터
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -140,7 +134,7 @@
               <li class="nav-item">
                 <a href="/static/admin/index.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Q&A 관리</p>
+                  <p>QnA</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -182,7 +176,7 @@
                   <p>디자인관리</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <!--상점관리 메뉴 끝-->

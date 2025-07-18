@@ -12,17 +12,28 @@ import mall.model.category.TopCategoryService;
 
 @Controller
 public class MainController {
+	
 	@Autowired
 	private TopCategoryService topCategoryService;
 	
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public ModelAndView getmain() {
-		//3단계: 일시키기
-		List topList = topCategoryService.selectAll();
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public ModelAndView getMain() {
+		//3단계: 일시키기 
+		List topList=topCategoryService.selectAll();
 		
 		ModelAndView mav = new ModelAndView("shop/index");
-		//4단계: 결과 저장
+		
+		//4단계: 결과 저장  
 		mav.addObject("topList", topList);
+		
 		return mav;
 	}
 }
+
+
+
+
+
+
+
+

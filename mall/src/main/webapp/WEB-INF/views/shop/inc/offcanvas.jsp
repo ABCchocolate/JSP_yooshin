@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
- <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
@@ -20,3 +20,4 @@
             <a href="#">Register</a>
         </div>
     </div>
+

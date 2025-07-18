@@ -4,17 +4,25 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="true"/>
 		<list key="findhistory">
-			<item value="globalnameREsource"/>
-			<item value="shop"/>
-			<item value="/shop"/>
-			<item value="appBase"/>
-			<item value="host"/>
-			<item value="mysql"/>
-			<item value="global"/>
-			<item value="detail"/>
-			<item value="page"/>
+			<item value="이미지 선택"/>
+			<item value="form"/>
+			<item value="submiy"/>
+			<item value="summernote"/>
+			<item value="codeMirror"/>
+			<item value="code"/>
+			<item value="Code"/>
+			<item value="card body"/>
+			<item value="logo"/>
+			<item value="logo.pnmg"/>
+			<item value="banner"/>
+			<item value="category-3"/>
+			<item value="product-8"/>
+			<item value="ht-2"/>
+			<item value="h2-2"/>
 		</list>
 		<list key="replacehistory">
+			<item value="/static/admin/plugins"/>
+			<item value="href=&quot;/static/admin/plugins"/>
 			<item value="admin"/>
 			<item value="/admin"/>
 		</list>

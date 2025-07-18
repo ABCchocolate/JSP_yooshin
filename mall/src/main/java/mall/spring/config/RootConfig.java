@@ -20,11 +20,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /*
- * 애플케이션 Scope 수준 에서 관리될 빈즈들의 대한 설정 파일 
+ * 애플케이션 Scope 수준 에서 관리될 빈즈들에 대한 설정 파일 
  * */
 @Configuration  //xml 설정 파일 대신 ,설정 역할을 하겠다!
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"mall.model"})
+@ComponentScan(basePackages = {"mall.model","mall.util"})
 public class RootConfig {
 	
 	//어떤 데이터베이스를 사용할지를 선택
@@ -98,3 +98,11 @@ public class RootConfig {
 	}
 
 }
+
+
+
+
+
+
+
+

@@ -8,8 +8,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "topcategory")
-
+@Table(name="topcategory")
 public class TopCategory {
 	@Id
 	private int topcategory_id;

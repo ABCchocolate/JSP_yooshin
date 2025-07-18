@@ -9,17 +9,24 @@ import org.springframework.stereotype.Repository;
 import mall.domain.TopCategory;
 
 @Repository
-public class MyBatisTopCategoryDAO implements TopCategoryDAO{
+public class MybatisTopCategoryDAO implements TopCategoryDAO{
+	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-
+	
 	@Override
 	public List selectAll() {
 		return sqlSessionTemplate.selectList("TopCategory.selectAll");
 	}
-	
+
 	@Override
 	public TopCategory select(int topcategory_id) {
 		return null;
 	}
+
 }
+
+
+
+
+

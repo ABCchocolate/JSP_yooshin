@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
- <section class="categories">
+    <section class="categories">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 p-0">
@@ -56,3 +56,4 @@
         </div>
     </div>
 </section>
+	

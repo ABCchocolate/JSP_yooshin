@@ -1,19 +1,15 @@
 package mall.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.Data;
 
+@Data 
 @Entity
-@Data
-@Table(name = "Notice")
+@Table(name="notice")
 public class Notice {
 	@Id
 	private int notice_id;
@@ -21,9 +17,9 @@ public class Notice {
 	private String title;
 	private String writer;
 	private String content;
-	@Column(name="regDate")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date regdate;
 	
+	@Column(name = "regdate", insertable = false, updatable = false)
+	private String regdate;
 	private int hit;
+	
 }

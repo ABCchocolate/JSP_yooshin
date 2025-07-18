@@ -6,7 +6,11 @@
 <title>Insert title here</title>
 </head>
 <body bgcolor="yellow">
-	에러 발생하였습니다.
+	에러 발생 
+	<%
+	Exception e=(Exception)request.getAttribute("e"); 
+	out.print(e.getMessage());
+	%>
 	
 </body>
 </html>
