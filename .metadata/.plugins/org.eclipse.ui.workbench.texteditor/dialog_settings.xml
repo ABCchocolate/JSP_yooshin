@@ -4,6 +4,10 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="true"/>
 		<list key="findhistory">
+			<item value="yellow"/>
+			<item value="photo"/>
+			<item value="name=&quot;photo&quot;"/>
+			<item value="name="/>
 			<item value="이미지 선택"/>
 			<item value="form"/>
 			<item value="submiy"/>
@@ -15,10 +19,6 @@
 			<item value="logo"/>
 			<item value="logo.pnmg"/>
 			<item value="banner"/>
-			<item value="category-3"/>
-			<item value="product-8"/>
-			<item value="ht-2"/>
-			<item value="h2-2"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/static/admin/plugins"/>
