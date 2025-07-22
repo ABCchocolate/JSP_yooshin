@@ -1,5 +1,7 @@
 package mall.domain;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -11,11 +13,20 @@ public class Product {
 	private String brand;
 	private int price;
 	private int discount;
-	private String introduce;
+	private String interviews;
 	private String detail;
 	private MultipartFile[] photo;
 	
 	private SubCategory subcategory;
+	
+	//하나의 상품은 여러 색상을 보유할 수 있다. 1:다
+	 private List<ProductColor> colorList;
+	 
+	 //하나의 상품은 여러 사이즈를 보유할 수 있다. 
+	 private List<ProductSize> sizeList;
+	 
+	 //하나의 상품은 여러 이미지를 만들 수 있다.
+	 private List<ProductImg> imgList;
 }
 
 

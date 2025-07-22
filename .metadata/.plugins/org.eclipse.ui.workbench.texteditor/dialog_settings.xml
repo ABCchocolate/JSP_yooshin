@@ -4,6 +4,8 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="true"/>
 		<list key="findhistory">
+			<item value="color"/>
+			<item value="js"/>
 			<item value="yellow"/>
 			<item value="photo"/>
 			<item value="name=&quot;photo&quot;"/>
@@ -17,8 +19,6 @@
 			<item value="Code"/>
 			<item value="card body"/>
 			<item value="logo"/>
-			<item value="logo.pnmg"/>
-			<item value="banner"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/static/admin/plugins"/>

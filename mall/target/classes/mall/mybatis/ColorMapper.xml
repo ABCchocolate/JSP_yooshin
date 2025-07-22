@@ -4,4 +4,6 @@
 	<select id="selectAll" resultType="Color">
 		select * from color
 	</select>
+	
+	
 </mapper>

@@ -1,3 +1,4 @@
+<%@page import="mall.domain.TopCategory"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
     <header class="header">
         <div class="container-fluid">
