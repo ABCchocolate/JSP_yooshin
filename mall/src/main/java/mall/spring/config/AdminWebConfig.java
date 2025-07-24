@@ -12,16 +12,19 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import mall.util.Paging;
+
 
 /*
  스프링의 고전적 설정을 담당하는 xml 을 대신하는 java class
 */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"mall.admin.controller"})
+@ComponentScan(basePackages = {"mall.admin.controller, mall.util"})
 //@Controller, @Service, @Repository, @Component
 public class AdminWebConfig extends WebMvcConfigurerAdapter{
 
+	
 	/*하위 컨트롤러가 3,4단계를 수행한 후, DispatcherServlet 에게 정확한 파일명을 알려주는게 아니라
 	 * 파일의 일부 단서만 반환한다(ModelAndView에 심어서), 따라서 이 객체를 넘겨받은 DispatcherServlet
 	 * 은 일부 단서를 직접 해석하지 않고, View에 대한 해석을 담당하는 전담객체에 맡긴다..
@@ -54,6 +57,13 @@ public class AdminWebConfig extends WebMvcConfigurerAdapter{
 		resolver.setMaxUploadSize(10*1024*1024); //10M 
 		return resolver;
 	}
+	
+	/*
+	@Bean
+	public Paging paging() {
+		return new Paging();
+	}
+	*/
 }
 
 

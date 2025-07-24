@@ -11,15 +11,17 @@ import mall.model.product.SizeService;
 
 @Controller
 public class SizeController {
-	
 	@Autowired
-	private SizeService sizeSevice;
+	private SizeService sizeService;
 	
 	@GetMapping("/admin/size/list")
-	@ResponseBody //response.setContentType("application/Type")
+	@ResponseBody
 	public List selectAll() {
-		List sizeList = sizeSevice.selectAll();
-		//jsp 로 가져갈 것이 없기 때문에, 저장할 필요가 없다.
-		return sizeList;
+		return sizeService.selectAll();
 	}
 }
+
+
+
+
+

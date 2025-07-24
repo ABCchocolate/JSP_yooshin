@@ -8,16 +8,18 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class MybatisColorDAO implements ColorDAO{
-
+	
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	@Override
 	public List selectAll() {
-		
 		return sqlSessionTemplate.selectList("Color.selectAll");
 	}
 	
-	
-	
 }
+
+
+
+
+
+

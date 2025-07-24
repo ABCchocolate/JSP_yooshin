@@ -1,4 +1,4 @@
-<%@page import="mall.domain.Notice"%>
+<%@page import="com.sinse.mvcapp.model.Notice"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%
 	Notice notice=(Notice)session.getAttribute("notice");

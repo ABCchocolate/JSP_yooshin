@@ -4,21 +4,21 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="true"/>
 		<list key="findhistory">
+			<item value="Get"/>
+			<item value="preview"/>
+			<item value="getTop"/>
+			<item value="top"/>
+			<item value="tyop"/>
+			<item value="introduce"/>
+			<item value="상품"/>
+			<item value="regist2tet"/>
+			<item value="card-footet"/>
+			<item value="resp"/>
 			<item value="color"/>
 			<item value="js"/>
 			<item value="yellow"/>
 			<item value="photo"/>
 			<item value="name=&quot;photo&quot;"/>
-			<item value="name="/>
-			<item value="이미지 선택"/>
-			<item value="form"/>
-			<item value="submiy"/>
-			<item value="summernote"/>
-			<item value="codeMirror"/>
-			<item value="code"/>
-			<item value="Code"/>
-			<item value="card body"/>
-			<item value="logo"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/static/admin/plugins"/>

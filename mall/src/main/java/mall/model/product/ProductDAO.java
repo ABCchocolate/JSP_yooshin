@@ -1,9 +1,14 @@
 package mall.model.product;
 
-import mall.domain.Color;
+import java.util.List;
+
 import mall.domain.Product;
 
 public interface ProductDAO {
+
 	public void insert(Product product);
-	public void insertColor(Color color);
+	public List selectAll();
+	public Product select(int product_id);
+	public void update(Product product);
+	public void delete(Product product);
 }

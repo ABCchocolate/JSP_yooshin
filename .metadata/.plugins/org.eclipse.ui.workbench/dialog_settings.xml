@@ -47,6 +47,8 @@
 		<item key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="true"/>
 		<item key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID" value="false"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="/Users/bag-yusin/Downloads/javaee_workspace-main 6/mall"/>
+			<item value="/Users/bag-yusin/Downloads/javaee_workspace-main 5/mall"/>
 			<item value="/Users/bag-yusin/Downloads/javaee_workspace-main 2/mall"/>
 			<item value="/Users/bag-yusin/Downloads/javaee_workspace-main 4/mall"/>
 			<item value="/Users/bag-yusin/Downloads/javaee_workspace-main 3/mall"/>

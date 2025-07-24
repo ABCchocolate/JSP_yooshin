@@ -1,19 +1,18 @@
 package mall.admin.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
 import mall.domain.Color;
@@ -23,10 +22,10 @@ import mall.domain.ProductSize;
 import mall.domain.Size;
 import mall.model.category.TopCategoryService;
 import mall.model.product.ProductService;
+import mall.util.Paging;
 
 @Slf4j
 @Controller
-
 public class ProductController {
 	
 	@Autowired
@@ -35,6 +34,11 @@ public class ProductController {
 	//서비스 에게 일시킴 (느슨하게 보유, 즉 결합도를 낮추어서 보유,따라서 인터페이스로 보유)
 	@Autowired
 	private TopCategoryService topCategoryService;
+	
+	
+	//페이징 처리 객체를 보유 
+	@Autowired
+	private Paging paging;
 	
 	// localhost:8888/admin/admin/product/registform
 	@RequestMapping(value="/admin/product/registform")
@@ -46,41 +50,39 @@ public class ProductController {
 	//상품 등록 요청을 처리 
 	@PostMapping("/admin/product/regist")
 	@ResponseBody
-	public String regist(Product product,int[] color, int[] size, HttpServletRequest request) {
+	public String regist(Product product, int[] color, int[] size,   HttpServletRequest request) {
 		
-	
 		
-		//사용자가 선택한 색상이 3개라면, productcolo의 인스턴스도 3개를 생성해야한다
-		//스프링의 자동 매핑이 불가능하므로, 개발자가 직접 생성한다.
-		//선언을 list로 진행하면된다.
+		//Product 객체의 멤버변수로 직접 html 과 매핑이 될 수 없는 경우엔, 우회하면 된다.. 
+		//우회란? 파라미터를 별도로 받아서,  다시 Product 에 넣어준다
 		
-		List<ProductColor> colorList = new ArrayList();
+		//사용자가 선택한 색상이 3개라면, ProductColor의 인스턴스도 3개를 생성!!
+		//스프링의 자동 매핑이 불가하므로, 개발자가 직접 생성 
+		List<ProductColor> colorList=new ArrayList();
 		List<ProductSize> sizeList = new ArrayList();
-		for(int c:color) {
-			Color cc = new Color();
+		
+		for(int c : color) {
+			Color cc= new Color();
 			cc.setColor_id(c);
 			
-			ProductColor productColor = new ProductColor();
+			ProductColor productColor  =new ProductColor();
+			//유저가 선택한 색상 대입 
 			productColor.setColor(cc);
 			colorList.add(productColor);
 		}
 		
-		for(int s:size) {
+		for(int s : size) {
 			Size ss = new Size();
 			ss.setSize_id(s);
 			
 			ProductSize productSize = new ProductSize();
-			productSize.setSize(ss);
+			productSize.setSize(ss);	
 			sizeList.add(productSize);
 		}
 		
-		//매핑이 완료 후 , Product에 대입..
+		//매핑완료 후, Product 에 대입 
 		product.setColorList(colorList);
 		product.setSizeList(sizeList);
-		
-		
-		//product 객체의 멤버변수로 직접 html과 매핑이 될 수 없는 경우엔, 우회하면 된다.
-		//우회란? 파라미터를 별도로 받아서, 다시 Product로 넣어주는 기법
 		
 		
 		//모델 객체는 table을 반영한 객체이므로, 컨트롤러 영역에서 바로 파라미터를 받는 용도도 사용해서는 안됨
@@ -88,17 +90,58 @@ public class ProductController {
 		//해결책은? 클라이언트의 파라미터를 받는 용도의 객체를 별도로 둔다(DTO=Data Transfer Object)
 		//DTO에서 Model 객체로 옮겨야 함..
 		
-		String savePath = request.getServletContext().getRealPath("/data"); 
+		String savePath = request.getServletContext().getRealPath("/data");
 		
-		productService.regist(product,savePath);
+		try {
+			productService.regist(product, savePath);
+		} catch (Exception e) {
+			productService.remove(product, savePath);
+			e.printStackTrace();
+		}
 		
-		
-		
+		//log.debug("product = "+product);
+		//log.debug("photo = "+photo);
+		//ServletContext context=request.getServletContext(); //jsp applicatio 내장 객체 
+		//String realPath = context.getRealPath("/data");
+		//log.debug("realPath is "+realPath);
 		
 		//4단계: DML은 저장할게 없다
-		return "redirect:/admin/admin/product/list";
+		return "ok";
+	}
+	
+	//목록 요청 처리 : 요청이 들어오면 list.jsp 를 응답정보로 보내야 한다..따라서 
+	//ResponseBody 가 아닌 ModelAndView로 반환해야 함..
+	@GetMapping("/admin/product/list")
+	public ModelAndView getList(HttpServletRequest request) {
+		//3단계: 목록 가져오기 
+		List productList=productService.selectAll();
+		
+		paging.init(productList, request);
+		
+		//4단계: 결과 저장
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productList", productList); //request.setAttribute("productList",productList);
+		mav.addObject("paging", paging); //페이징 처리 객체도 담기
+
+		mav.setViewName("secure/product/list");
+		
+		return mav;
+	}
+	
+	//상세요청에 대한 처리 
+	@GetMapping("/admin/product/detail")
+	public String getDetail(int product_id, Model model) {
+		//3단계: 상세 내용 가져오기
+		Product product=productService.select(product_id);
+		
+		//4단계: 저장 
+		model.addAttribute("product", product);
+		
+		 
+		return "secure/product/detail";
 	}
 }
+
 
 
 

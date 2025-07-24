@@ -13,13 +13,22 @@ import mall.model.product.ColorService;
 public class ColorController {
 	
 	@Autowired
-	private ColorService colorSevice;
+	private ColorService colorService;
 	
 	@GetMapping("/admin/color/list")
-	@ResponseBody //response.setContentType("application/Type")
+	@ResponseBody 	//response.setContentType("application/json")
 	public List selectAll() {
-		List colorList = colorSevice.selectAll();
-		//jsp 로 가져갈 것이 없기 때문에, 저장할 필요가 없다.
+		//3단계: 일 시키기 
+		List colorList = colorService.selectAll();
+		
+		//4단계: jsp로 가져갈 것이 없으므로 저장하는 것이 아니라, 데이터 출력 
 		return colorList;
 	}
+	
 }
+
+
+
+
+
+

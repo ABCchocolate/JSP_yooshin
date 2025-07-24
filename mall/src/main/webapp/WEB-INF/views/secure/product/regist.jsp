@@ -90,13 +90,13 @@
                     <input type="text" class="form-control" name="introduce" placeholder="간단소개 100자 이하 ">
                   </div>
 				   <div class="form-group">
-                       <select class="form-control" name ="color"  id="color" multiple = "multiple">
-                         <option>색상 선택</option>
+                       <select class="form-control" name="color" id="color" multiple="multiple">
+                         <option value="1">ReD</option>
                        </select>
 	              </div>
 				  
 				  <div class="form-group">
-                       <select class="form-control" name = "size"  id="size" multiple = "multiple">
+                       <select class="form-control" name="size" id="size" multiple="multiple">
                          <option>사이즈 선택</option>
                        </select>
 	              </div>
@@ -130,7 +130,8 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="button" class="btn btn-secondary" id="bt_regist">Submit</button>
+                  <button type="button" class="btn btn-secondary" id="bt_regist">상품등록</button>
+                  <button type="button" class="btn btn-secondary" id="bt_list">목록보기</button>
                 </div>
               </form>
             </div>
@@ -201,6 +202,9 @@
 			url:"/admin/admin/color/list",
 			type:"get",
 			success:function(result, status, xhr){
+				
+				console.log("색상은 ",result);
+				
 				printCategory("#color", result);
 			}
 		});
@@ -257,7 +261,7 @@
 			}
 		});
 	}
-	   
+	
 	$(()=>{
 	   $('#summernote').summernote({
 		height:200,
@@ -266,8 +270,6 @@
 	   getTopCategory(); //상위 카테고리 가져오기 
 	   getColorList(); //색상 목록 가져오기 
 	   getSizeList(); //사이즈 목록 가져오기 
-	   
-
 	   
 	   //상위 카테고리의 값을 변경시, 하위 카테고리 가져오기 
 	   $("#topcategory").change(function(){
@@ -303,11 +305,18 @@
 	   $("#bt_regist").click(()=>{		
 			regist();
 	   });
+	   
+	   //목록 버튼 이벤트 연결 
+	   $("#bt_list").click(()=>{		
+			$(location).attr("href", "/admin/admin/product/list");
+	   });
+	   
 	});
 	</script>
 	
 </body>
 </html>
+
 
 
 
